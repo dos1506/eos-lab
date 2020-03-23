@@ -1,0 +1,19 @@
+---
+switch:
+  username: lab
+  password: lab
+  port: 22
+
+spine:
+	data:
+		router-id:
+			- 10.0.0.1
+			- 10.0.0.2
+
+leaf:
+	data:
+		router-id:
+			- 10.0.1.1
+			- 10.0.1.2
+			- 10.0.1.3
+			- 10.0.1.4
