@@ -1,0 +1,356 @@
+2020-03-24 00:15:58,771 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'groups.yaml' was not found
+2020-03-24 00:16:36,545 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'groups.yaml' was not found
+2020-03-24 00:17:05,402 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'groups.yaml' was not found
+2020-03-24 00:18:56,577 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'groups.yaml' was not found
+2020-03-24 00:19:15,327 - nornir.plugins.inventory.simple -    DEBUG -   __init__() - File 'groups.yaml' was not found
+2020-03-24 00:20:01,219 -  nornir.core -     INFO -        run() - Running task 'fetch_running_config' with args {} on 6 hosts
+2020-03-24 00:20:01,222 - nornir.core.task -    DEBUG -      start() - Host 'spine-1': running task 'fetch_running_config'
+2020-03-24 00:20:01,224 - nornir.core.task -    DEBUG -      start() - Host 'spine-1': running task 'remote_command'
+2020-03-24 00:20:01,224 - nornir.core.task -    DEBUG -      start() - Host 'spine-2': running task 'fetch_running_config'
+2020-03-24 00:20:01,225 - nornir.core.task -    DEBUG -      start() - Host 'leaf-1': running task 'fetch_running_config'
+2020-03-24 00:20:01,227 - nornir.core.task -    DEBUG -      start() - Host 'spine-2': running task 'remote_command'
+2020-03-24 00:20:01,233 - nornir.core.task -    DEBUG -      start() - Host 'leaf-1': running task 'remote_command'
+2020-03-24 00:20:01,233 - nornir.core.task -    DEBUG -      start() - Host 'leaf-2': running task 'fetch_running_config'
+2020-03-24 00:20:01,235 - nornir.core.task -    DEBUG -      start() - Host 'leaf-3': running task 'fetch_running_config'
+2020-03-24 00:20:01,237 - nornir.core.task -    DEBUG -      start() - Host 'leaf-4': running task 'fetch_running_config'
+2020-03-24 00:20:01,242 - nornir.core.task -    DEBUG -      start() - Host 'leaf-2': running task 'remote_command'
+2020-03-24 00:20:01,243 - nornir.core.task -    DEBUG -      start() - Host 'leaf-3': running task 'remote_command'
+2020-03-24 00:20:01,245 - nornir.core.task -    DEBUG -      start() - Host 'leaf-4': running task 'remote_command'
+2020-03-24 00:20:01,805 - nornir.core.task -    ERROR -      start() - Host 'spine-1': task 'remote_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/transport.py", line 1528, in auth_password
+    return self.auth_interactive(username, handler)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/transport.py", line 1633, in auth_interactive
+    return self.auth_handler.wait_for_response(my_event)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/auth_handler.py", line 250, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/tasks/commands/remote_command.py", line 23, in remote_command
+    client = task.host.get_connection("paramiko", task.nornir.config)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/inventory.py", line 294, in get_connection
+    self.open_connection(
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/inventory.py", line 345, in open_connection
+    self.connections[connection].open(
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/connections/paramiko.py", line 64, in open
+    client.connect(**extras)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/client.py", line 435, in connect
+    self._auth(
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/client.py", line 764, in _auth
+    raise saved_exception
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/client.py", line 751, in _auth
+    self._transport.auth_password(username, password)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/transport.py", line 1531, in auth_password
+    raise e
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/transport.py", line 1509, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/auth_handler.py", line 250, in wait_for_response
+    raise e
+paramiko.ssh_exception.BadAuthenticationType: Bad authentication type; allowed types: ['publickey', 'keyboard-interactive']
+
+2020-03-24 00:20:01,807 - nornir.core.task -    ERROR -      start() - Host 'spine-1': task 'fetch_running_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "config-collector.py", line 9, in fetch_running_config
+    task.run(task=commands.remote_command,
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function remote_command at 0x7f36bdeadee0> (failed)
+
+
+2020-03-24 00:20:02,289 - nornir.core.task -    ERROR -      start() - Host 'leaf-4': task 'remote_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/tasks/commands/remote_command.py", line 41, in remote_command
+    raise CommandError(command, exit_status_code, stdout, stderr)
+nornir.core.exceptions.CommandError: ('show running-config', 1, '\n> show running-config\n% Invalid input (privileged mode required) at line 1\n', '')
+
+2020-03-24 00:20:02,290 - nornir.core.task -    ERROR -      start() - Host 'leaf-4': task 'fetch_running_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "config-collector.py", line 9, in fetch_running_config
+    task.run(task=commands.remote_command,
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function remote_command at 0x7f36bdeadee0> (failed)
+
+
+2020-03-24 00:20:02,312 - nornir.core.task -    ERROR -      start() - Host 'spine-2': task 'remote_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/tasks/commands/remote_command.py", line 41, in remote_command
+    raise CommandError(command, exit_status_code, stdout, stderr)
+nornir.core.exceptions.CommandError: ('show running-config', 1, '\n> show running-config\n% Invalid input (privileged mode required) at line 1\n', '')
+
+2020-03-24 00:20:02,314 - nornir.core.task -    ERROR -      start() - Host 'spine-2': task 'fetch_running_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "config-collector.py", line 9, in fetch_running_config
+    task.run(task=commands.remote_command,
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function remote_command at 0x7f36bdeadee0> (failed)
+
+
+2020-03-24 00:20:02,384 - nornir.core.task -    ERROR -      start() - Host 'leaf-2': task 'remote_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/tasks/commands/remote_command.py", line 41, in remote_command
+    raise CommandError(command, exit_status_code, stdout, stderr)
+nornir.core.exceptions.CommandError: ('show running-config', 1, '\n> show running-config\n% Invalid input (privileged mode required) at line 1\n', '')
+
+2020-03-24 00:20:02,385 - nornir.core.task -    ERROR -      start() - Host 'leaf-2': task 'fetch_running_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "config-collector.py", line 9, in fetch_running_config
+    task.run(task=commands.remote_command,
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function remote_command at 0x7f36bdeadee0> (failed)
+
+
+2020-03-24 00:20:02,540 - nornir.core.task -    ERROR -      start() - Host 'leaf-1': task 'remote_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/tasks/commands/remote_command.py", line 41, in remote_command
+    raise CommandError(command, exit_status_code, stdout, stderr)
+nornir.core.exceptions.CommandError: ('show running-config', 1, '\n> show running-config\n% Invalid input (privileged mode required) at line 1\n', '')
+
+2020-03-24 00:20:02,541 - nornir.core.task -    ERROR -      start() - Host 'leaf-1': task 'fetch_running_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "config-collector.py", line 9, in fetch_running_config
+    task.run(task=commands.remote_command,
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function remote_command at 0x7f36bdeadee0> (failed)
+
+
+2020-03-24 00:20:02,601 - nornir.core.task -    ERROR -      start() - Host 'leaf-3': task 'remote_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/tasks/commands/remote_command.py", line 41, in remote_command
+    raise CommandError(command, exit_status_code, stdout, stderr)
+nornir.core.exceptions.CommandError: ('show running-config', 1, '\n> show running-config\n% Invalid input (privileged mode required) at line 1\n', '')
+
+2020-03-24 00:20:02,602 - nornir.core.task -    ERROR -      start() - Host 'leaf-3': task 'fetch_running_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "config-collector.py", line 9, in fetch_running_config
+    task.run(task=commands.remote_command,
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function remote_command at 0x7f36bdeadee0> (failed)
+
+
+2020-03-24 00:21:48,761 -  nornir.core -     INFO -        run() - Running task 'fetch_running_config' with args {} on 6 hosts
+2020-03-24 00:21:48,763 - nornir.core.task -    DEBUG -      start() - Host 'spine-1': running task 'fetch_running_config'
+2020-03-24 00:21:48,764 - nornir.core.task -    DEBUG -      start() - Host 'spine-2': running task 'fetch_running_config'
+2020-03-24 00:21:48,765 - nornir.core.task -    DEBUG -      start() - Host 'spine-1': running task 'remote_command'
+2020-03-24 00:21:48,766 - nornir.core.task -    DEBUG -      start() - Host 'leaf-1': running task 'fetch_running_config'
+2020-03-24 00:21:48,766 - nornir.core.task -    DEBUG -      start() - Host 'spine-2': running task 'remote_command'
+2020-03-24 00:21:48,767 - nornir.core.task -    DEBUG -      start() - Host 'leaf-2': running task 'fetch_running_config'
+2020-03-24 00:21:48,769 - nornir.core.task -    DEBUG -      start() - Host 'leaf-3': running task 'fetch_running_config'
+2020-03-24 00:21:48,770 - nornir.core.task -    DEBUG -      start() - Host 'leaf-1': running task 'remote_command'
+2020-03-24 00:21:48,774 - nornir.core.task -    DEBUG -      start() - Host 'leaf-4': running task 'fetch_running_config'
+2020-03-24 00:21:48,775 - nornir.core.task -    DEBUG -      start() - Host 'leaf-2': running task 'remote_command'
+2020-03-24 00:21:48,777 - nornir.core.task -    DEBUG -      start() - Host 'leaf-3': running task 'remote_command'
+2020-03-24 00:21:48,778 - nornir.core.task -    DEBUG -      start() - Host 'leaf-4': running task 'remote_command'
+2020-03-24 00:21:49,315 - nornir.core.task -    ERROR -      start() - Host 'spine-1': task 'remote_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/transport.py", line 1528, in auth_password
+    return self.auth_interactive(username, handler)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/transport.py", line 1633, in auth_interactive
+    return self.auth_handler.wait_for_response(my_event)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/auth_handler.py", line 250, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/tasks/commands/remote_command.py", line 23, in remote_command
+    client = task.host.get_connection("paramiko", task.nornir.config)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/inventory.py", line 294, in get_connection
+    self.open_connection(
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/inventory.py", line 345, in open_connection
+    self.connections[connection].open(
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/connections/paramiko.py", line 64, in open
+    client.connect(**extras)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/client.py", line 435, in connect
+    self._auth(
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/client.py", line 764, in _auth
+    raise saved_exception
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/client.py", line 751, in _auth
+    self._transport.auth_password(username, password)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/transport.py", line 1531, in auth_password
+    raise e
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/transport.py", line 1509, in auth_password
+    return self.auth_handler.wait_for_response(my_event)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/paramiko/auth_handler.py", line 250, in wait_for_response
+    raise e
+paramiko.ssh_exception.BadAuthenticationType: Bad authentication type; allowed types: ['publickey', 'keyboard-interactive']
+
+2020-03-24 00:21:49,316 - nornir.core.task -    ERROR -      start() - Host 'spine-1': task 'fetch_running_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "config-collector.py", line 9, in fetch_running_config
+    task.run(task=commands.remote_command,
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function remote_command at 0x7fda7587eee0> (failed)
+
+
+2020-03-24 00:21:49,666 - nornir.core.task -    ERROR -      start() - Host 'leaf-2': task 'remote_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/tasks/commands/remote_command.py", line 41, in remote_command
+    raise CommandError(command, exit_status_code, stdout, stderr)
+nornir.core.exceptions.CommandError: ('show running-config', 1, '\n> show running-config\n% Invalid input (privileged mode required) at line 1\n', '')
+
+2020-03-24 00:21:49,668 - nornir.core.task -    ERROR -      start() - Host 'leaf-2': task 'fetch_running_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "config-collector.py", line 9, in fetch_running_config
+    task.run(task=commands.remote_command,
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function remote_command at 0x7fda7587eee0> (failed)
+
+
+2020-03-24 00:21:49,748 - nornir.core.task -    ERROR -      start() - Host 'spine-2': task 'remote_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/tasks/commands/remote_command.py", line 41, in remote_command
+    raise CommandError(command, exit_status_code, stdout, stderr)
+nornir.core.exceptions.CommandError: ('show running-config', 1, '\n> show running-config\n% Invalid input (privileged mode required) at line 1\n', '')
+
+2020-03-24 00:21:49,750 - nornir.core.task -    ERROR -      start() - Host 'spine-2': task 'fetch_running_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "config-collector.py", line 9, in fetch_running_config
+    task.run(task=commands.remote_command,
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function remote_command at 0x7fda7587eee0> (failed)
+
+
+2020-03-24 00:21:49,847 - nornir.core.task -    ERROR -      start() - Host 'leaf-3': task 'remote_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/tasks/commands/remote_command.py", line 41, in remote_command
+    raise CommandError(command, exit_status_code, stdout, stderr)
+nornir.core.exceptions.CommandError: ('show running-config', 1, '\n> show running-config\n% Invalid input (privileged mode required) at line 1\n', '')
+
+2020-03-24 00:21:49,848 - nornir.core.task -    ERROR -      start() - Host 'leaf-3': task 'fetch_running_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "config-collector.py", line 9, in fetch_running_config
+    task.run(task=commands.remote_command,
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function remote_command at 0x7fda7587eee0> (failed)
+
+
+2020-03-24 00:21:49,873 - nornir.core.task -    ERROR -      start() - Host 'leaf-4': task 'remote_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/tasks/commands/remote_command.py", line 41, in remote_command
+    raise CommandError(command, exit_status_code, stdout, stderr)
+nornir.core.exceptions.CommandError: ('show running-config', 1, '\n> show running-config\n% Invalid input (privileged mode required) at line 1\n', '')
+
+2020-03-24 00:21:49,874 - nornir.core.task -    ERROR -      start() - Host 'leaf-4': task 'fetch_running_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "config-collector.py", line 9, in fetch_running_config
+    task.run(task=commands.remote_command,
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function remote_command at 0x7fda7587eee0> (failed)
+
+
+2020-03-24 00:21:49,985 - nornir.core.task -    ERROR -      start() - Host 'leaf-1': task 'remote_command' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/plugins/tasks/commands/remote_command.py", line 41, in remote_command
+    raise CommandError(command, exit_status_code, stdout, stderr)
+nornir.core.exceptions.CommandError: ('show running-config', 1, '\n> show running-config\n% Invalid input (privileged mode required) at line 1\n', '')
+
+2020-03-24 00:21:49,987 - nornir.core.task -    ERROR -      start() - Host 'leaf-1': task 'fetch_running_config' failed with traceback:
+Traceback (most recent call last):
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 85, in start
+    r = self.task(self, **self.params)
+  File "config-collector.py", line 9, in fetch_running_config
+    task.run(task=commands.remote_command,
+  File "/home/dos/.pyenv/versions/3.8.0/lib/python3.8/site-packages/nornir/core/task.py", line 147, in run
+    raise NornirSubTaskError(task=task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: <function remote_command at 0x7fda7587eee0> (failed)
+
+
+2020-03-24 00:24:13,574 -  nornir.core -     INFO -        run() - Running task 'fetch_running_config' with args {} on 6 hosts
+2020-03-24 00:24:13,576 - nornir.core.task -    DEBUG -      start() - Host 'spine-1': running task 'fetch_running_config'
+2020-03-24 00:24:13,577 - nornir.core.task -    DEBUG -      start() - Host 'spine-1': running task 'remote_command'
+2020-03-24 00:24:13,577 - nornir.core.task -    DEBUG -      start() - Host 'spine-2': running task 'fetch_running_config'
+2020-03-24 00:24:13,580 - nornir.core.task -    DEBUG -      start() - Host 'leaf-1': running task 'fetch_running_config'
+2020-03-24 00:24:13,580 - nornir.core.task -    DEBUG -      start() - Host 'spine-2': running task 'remote_command'
+2020-03-24 00:24:13,586 - nornir.core.task -    DEBUG -      start() - Host 'leaf-2': running task 'fetch_running_config'
+2020-03-24 00:24:13,586 - nornir.core.task -    DEBUG -      start() - Host 'leaf-1': running task 'remote_command'
+2020-03-24 00:24:13,588 - nornir.core.task -    DEBUG -      start() - Host 'leaf-3': running task 'fetch_running_config'
+2020-03-24 00:24:13,596 - nornir.core.task -    DEBUG -      start() - Host 'leaf-3': running task 'remote_command'
+2020-03-24 00:24:13,590 - nornir.core.task -    DEBUG -      start() - Host 'leaf-2': running task 'remote_command'
+2020-03-24 00:24:13,590 - nornir.core.task -    DEBUG -      start() - Host 'leaf-4': running task 'fetch_running_config'
+2020-03-24 00:24:13,601 - nornir.core.task -    DEBUG -      start() - Host 'leaf-4': running task 'remote_command'
+2020-03-24 00:25:02,021 -  nornir.core -     INFO -        run() - Running task 'fetch_running_config' with args {} on 6 hosts
+2020-03-24 00:25:02,023 - nornir.core.task -    DEBUG -      start() - Host 'spine-1': running task 'fetch_running_config'
+2020-03-24 00:25:02,024 - nornir.core.task -    DEBUG -      start() - Host 'spine-2': running task 'fetch_running_config'
+2020-03-24 00:25:02,025 - nornir.core.task -    DEBUG -      start() - Host 'leaf-1': running task 'fetch_running_config'
+2020-03-24 00:25:02,025 - nornir.core.task -    DEBUG -      start() - Host 'spine-1': running task 'remote_command'
+2020-03-24 00:25:02,026 - nornir.core.task -    DEBUG -      start() - Host 'leaf-2': running task 'fetch_running_config'
+2020-03-24 00:25:02,026 - nornir.core.task -    DEBUG -      start() - Host 'spine-2': running task 'remote_command'
+2020-03-24 00:25:02,027 - nornir.core.task -    DEBUG -      start() - Host 'leaf-3': running task 'fetch_running_config'
+2020-03-24 00:25:02,028 - nornir.core.task -    DEBUG -      start() - Host 'leaf-1': running task 'remote_command'
+2020-03-24 00:25:02,028 - nornir.core.task -    DEBUG -      start() - Host 'leaf-4': running task 'fetch_running_config'
+2020-03-24 00:25:02,030 - nornir.core.task -    DEBUG -      start() - Host 'leaf-2': running task 'remote_command'
+2020-03-24 00:25:02,037 - nornir.core.task -    DEBUG -      start() - Host 'leaf-3': running task 'remote_command'
+2020-03-24 00:25:02,038 - nornir.core.task -    DEBUG -      start() - Host 'leaf-4': running task 'remote_command'
+2020-03-24 00:27:01,656 -  nornir.core -     INFO -        run() - Running task 'fetch_running_config' with args {} on 6 hosts
+2020-03-24 00:27:01,658 - nornir.core.task -    DEBUG -      start() - Host 'spine-1': running task 'fetch_running_config'
+2020-03-24 00:27:01,659 - nornir.core.task -    DEBUG -      start() - Host 'spine-1': running task 'remote_command'
+2020-03-24 00:27:01,659 - nornir.core.task -    DEBUG -      start() - Host 'spine-2': running task 'fetch_running_config'
+2020-03-24 00:27:01,661 - nornir.core.task -    DEBUG -      start() - Host 'spine-2': running task 'remote_command'
+2020-03-24 00:27:01,665 - nornir.core.task -    DEBUG -      start() - Host 'leaf-1': running task 'fetch_running_config'
+2020-03-24 00:27:01,666 - nornir.core.task -    DEBUG -      start() - Host 'leaf-2': running task 'fetch_running_config'
+2020-03-24 00:27:01,667 - nornir.core.task -    DEBUG -      start() - Host 'leaf-1': running task 'remote_command'
+2020-03-24 00:27:01,670 - nornir.core.task -    DEBUG -      start() - Host 'leaf-3': running task 'fetch_running_config'
+2020-03-24 00:27:01,670 - nornir.core.task -    DEBUG -      start() - Host 'leaf-2': running task 'remote_command'
+2020-03-24 00:27:01,673 - nornir.core.task -    DEBUG -      start() - Host 'leaf-4': running task 'fetch_running_config'
+2020-03-24 00:27:01,674 - nornir.core.task -    DEBUG -      start() - Host 'leaf-3': running task 'remote_command'
+2020-03-24 00:27:01,679 - nornir.core.task -    DEBUG -      start() - Host 'leaf-4': running task 'remote_command'
